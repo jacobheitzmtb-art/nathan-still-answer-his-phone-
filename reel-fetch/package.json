@@ -1,0 +1,5 @@
+{
+  "name": "reel-fetch", "version": "1.0.0", "private": true, "type": "module",
+  "scripts": { "start": "node --env-file-if-exists=.env server.mjs", "dev": "node --env-file-if-exists=.env --watch server.mjs", "test": "node --test test/*.test.mjs", "check": "node --check server.mjs && node --check lib.mjs && node --check processing.mjs && node --check runtime.mjs && node --check network.mjs && node --check site.mjs && node --check public/app.js" },
+  "engines": { "node": ">=22" }
+}
