@@ -2,7 +2,8 @@ import {isIP} from 'node:net';
 import {UserError} from './lib.mjs';
 export const PORT=Number(process.env.PORT||4178);
 export const BIND_HOST=process.env.BIND_HOST||'127.0.0.1';
-export const PUBLIC_ORIGIN=process.env.PUBLIC_ORIGIN?new URL(process.env.PUBLIC_ORIGIN).origin:null;
+const configuredOrigin=process.env.PUBLIC_ORIGIN||process.env.RENDER_EXTERNAL_URL;
+export const PUBLIC_ORIGIN=configuredOrigin?new URL(configuredOrigin).origin:null;
 if(process.env.NODE_ENV==='production'&&(!PUBLIC_ORIGIN||!PUBLIC_ORIGIN.startsWith('https://')))throw new Error('Set PUBLIC_ORIGIN to your HTTPS site origin for production.');
 const allowed=new Set([`127.0.0.1:${PORT}`,`localhost:${PORT}`,...(PUBLIC_ORIGIN?[new URL(PUBLIC_ORIGIN).host]:[])]);
 export function validateRequest(req){

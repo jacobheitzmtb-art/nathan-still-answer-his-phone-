@@ -1,0 +1,12 @@
+.cache
+.vendor
+.env
+.local-config.json
+.git
+node_modules
+*.zip
+*.log
+public/assets/reel-covers-original.png
+public/design.css
+public/reelfetch.css
+public/upsy-theme.css

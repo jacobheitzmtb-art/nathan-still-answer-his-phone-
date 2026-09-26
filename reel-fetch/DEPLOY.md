@@ -1,5 +1,13 @@
 # Hosting Reel Fetch
 
+## Free Render option
+
+The included `render.yaml` defines one free Docker web service, with no paid disks or additional services. Push this source directory as a separate GitHub, GitLab, or Bitbucket repository, then connect that repository to Render. Use the free workspace and free compute plan. Keep payment details unset if you require zero charges; Render suspends free services at applicable usage limits instead of billing an account without a payment method.
+
+Set real operator, contact, copyright and hosting-description values during setup. Render supplies `RENDER_EXTERNAL_URL`, which the app uses automatically for HTTPS Host/Origin validation and page metadata. Set `PUBLIC_ORIGIN` only to override that address, for example when adding a custom domain. Use the provided health endpoint and bind settings.
+
+Free instances sleep after 15 minutes idle, can take about a minute to wake up, and have limited compute and monthly bandwidth. Instagram may block the provider's IP addresses; verify actual downloads after deployment. Temporary files disappear on a restart or sleep. See https://render.com/docs/free for current limits.
+
 ## What you need
 
 A Linux VPS or container host with Docker Compose, a domain pointing at it, and inbound ports 80/443 open. Start with 2 CPU cores, 2 GB RAM, and at least 25 GB free disk; monitor disk and resource use. Downloads require outgoing HTTPS access to Instagram/Meta. Static-only hosting cannot run this backend.

@@ -1,8 +1,9 @@
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {ROOT} from './lib.mjs';
+import {PUBLIC_ORIGIN} from './runtime.mjs';
 export const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const origin=new URL(process.env.PUBLIC_ORIGIN||`http://127.0.0.1:${process.env.PORT||4178}`).origin;
+const origin=PUBLIC_ORIGIN||`http://127.0.0.1:${process.env.PORT||4178}`;
 export const isPublic=origin.startsWith('https://');
 const email=process.env.CONTACT_EMAIL, copyrightEmail=process.env.COPYRIGHT_EMAIL, operator=process.env.OPERATOR_NAME;
 const contactLink=(value,fallback)=>value&&/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value)?`<a href="mailto:${escape(value)}">${escape(value)}</a>`:`<code>${escape(fallback)}</code> (not configured)`;

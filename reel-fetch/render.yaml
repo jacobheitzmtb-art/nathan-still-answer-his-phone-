@@ -1,0 +1,28 @@
+# One free service. No paid databases, disks, workers, or custom domains.
+services:
+  - type: web
+    name: reel-fetch
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: BIND_HOST
+        value: 0.0.0.0
+      - key: TRUST_PROXY
+        value: "1"
+      - key: OPERATOR_NAME
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: COPYRIGHT_EMAIL
+        sync: false
+      - key: HOSTING_DESCRIPTION
+        sync: false
