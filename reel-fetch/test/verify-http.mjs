@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-const base='http://127.0.0.1:4178';
+const base=process.env.TEST_ORIGIN||'http://127.0.0.1:4178';
 for(const route of ['/','/terms','/privacy','/copyright','/contact','/disclaimer','/style.css','/assets/reel-covers.webp','/app.js','/favicon.svg','/robots.txt','/sitemap.xml']){
  const response=await fetch(base+route);assert.equal(response.status,200,route);assert.ok(response.headers.get('content-security-policy'));assert.equal(response.headers.get('x-content-type-options'),'nosniff');
 }

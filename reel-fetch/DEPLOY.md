@@ -51,4 +51,6 @@ Without Docker, install Node 22+, Python 3.10+, FFmpeg and the pinned requiremen
 
 ## Verification scope
 
-The source app and real download flow were tested locally. Docker was unavailable on the development machine, so the container image and public HTTPS deployment still need a smoke test on your chosen host. Hosting-provider IP restrictions may differ from a local connection.
+The Docker image was built successfully on Render and deployed on the free plan at https://reel-fetch-j0ed.onrender.com. The sample Reel passed real best-quality, 1080p, 720p, 360p and MP3 exports, audio/stream inspection, partial-content downloads, and HTTP route/security checks. The browser preview and audio download also passed. This verifies the tested content and deployment; other content and hosting-provider IP restrictions may differ.
+
+To verify the live service from this project, set `TEST_ORIGIN=https://reel-fetch-j0ed.onrender.com` before running the HTTP or download verification scripts. The live source is in the supplied GitHub repository under `reel-fetch`; Render auto-deploy is off. Use Manual Deploy after pushing future app changes. Contact and copyright email values are still unconfigured pending the operator's choice.

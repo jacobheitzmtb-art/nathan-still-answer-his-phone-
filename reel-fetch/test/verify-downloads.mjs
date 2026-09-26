@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {ROOT,FFMPEG,run} from '../lib.mjs';
-const base='http://127.0.0.1:4178';
+const base=process.env.TEST_ORIGIN||'http://127.0.0.1:4178';
 const url=process.argv[2];if(!url)throw new Error('Pass an authorized public Instagram URL.');
 async function api(route,body){const r=await fetch(base+route,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});const data=await r.json();assert.ok(r.ok,JSON.stringify(data));return data;}
 const record=await api('/api/search',{url});
